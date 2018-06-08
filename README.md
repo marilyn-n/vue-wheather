@@ -1,12 +1,11 @@
-# vue-weather
+# Vue Weather App
 
-> A Vue.js project
-
+Weather App using OpenWeatherMap Api
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
+# Installation
+
+# Build Setup
 
 # serve with hot reload at localhost:8080
 npm run dev
