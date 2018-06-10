@@ -4,24 +4,50 @@
     <div class="row">
     <div class="col"> 
       <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Insert Country" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input type="text" class="form-control" v-model="city"  placeholder="Insert Country" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Go</button>
+          <button class="btn btn-outline-secondary" type="submit" v-on:click="getData">Go</button>
+          {{city}}
         </div>
       </div>
      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body" v-for='d in data'>
+        <p>
+          {{data | json}}
+        </p>
+      </div>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "HelloWorld",
   data() {
-    return {};
-  }
-};
+    return {
+      city: '',
+      base_URL: 'http://api.openweathermap.org/data/2.5/',
+      data: {},
+      }
+    },
+    methods: {
+      getData() {
+        let self = this;
+        axios.get(`${this.base_URL}weather?q='+self.city+'&appid=cf703cde5684f6fd594aaece7c6cc8de`,function(JSON){
+        self.$set('data', json);
+        console.log('data')
+
+        });
+      },
+    }
+  };
 </script>
 
 <style scoped>
