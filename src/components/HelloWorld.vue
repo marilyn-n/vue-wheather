@@ -30,24 +30,25 @@ import axios from 'axios';
 
 export default {
   name: "HelloWorld",
-  data() {
-    return {
+  data () { 
+    return { 
       city: '',
       base_URL: 'http://api.openweathermap.org/data/2.5/',
-      data: {},
+      api: 'cf703cde5684f6fd594aaece7c6cc8de',
+      data: [],
       }
     },
     methods: {
-      getData() {
-        let self = this;
-        axios.get(`${this.base_URL}weather?q='+self.city+'&appid=cf703cde5684f6fd594aaece7c6cc8de`,function(JSON){
-        self.$set('data', json);
-        console.log('data')
 
-        });
-      },
-    }
-  };
+      getData() {
+      axios.get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
+      .then(response => {
+        console.log(response);
+        console.log(response.data); 
+      });
+    },
+  }
+};
 </script>
 
 <style scoped>
