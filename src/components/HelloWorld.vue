@@ -14,8 +14,21 @@
     </div>
   </div>
   <div class="card mt-3">
-     <ul v-for='d in myData' class="wheather-list">
-       <li>{{d | json}}</li>
+    <h1>Forecast</h1>
+     <ul v-if='myData' class="wheather-list">
+       <h4>{{myData.name}}</h4>
+       <b>{{myData.sys}}</b>
+       <h4>Main</h4>
+       <li>{{myData.main}}</li>
+       <h4>Weather</h4>
+       <li>{{myData.weather}}</li>
+        <li>{{myData.wind}}</li>
+        <li>{{myData.rain}}</li>
+        <li>{{myData.clouds}}</li>
+        <li><img v-bind:src="`${this.imgURL}{{myData.weather[0].icon}}.png`"></li>
+
+<!-- <img v-bind:src="`${imgPreUrl()}img/logo.png`"> -->
+
      </ul>
   </div>
   </div>
@@ -31,7 +44,8 @@ export default {
       city: "",
       base_URL: "http://api.openweathermap.org/data/2.5/",
       api: "cf703cde5684f6fd594aaece7c6cc8de",
-      myData: []
+      myData: [],
+      imgURL: 'http://openweathermap.org/img/w/'
     };
   },
   methods: {
