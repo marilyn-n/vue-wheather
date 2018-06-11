@@ -13,44 +13,43 @@
      </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-body" v-for='d in data'>
-        <p>
-          {{data | json}}
-        </p>
-      </div>
-    </div>
+
+        <ul v-for='d in myData' class="wheather-list">
+          <li>{{d | json}}</li>
+        </ul>
+
   </div>
-</div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "HelloWorld",
-  data () { 
-    return { 
-      city: '',
-      base_URL: 'http://api.openweathermap.org/data/2.5/',
-      api: 'cf703cde5684f6fd594aaece7c6cc8de',
-      data: [],
-      }
-    },
-    methods: {
-
-      getData() {
-      axios.get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
-      .then(response => {
-        console.log(response);
-        console.log(response.data); 
-      });
-    },
+  data() {
+    return {
+      city: "",
+      base_URL: "http://api.openweathermap.org/data/2.5/",
+      api: "cf703cde5684f6fd594aaece7c6cc8de",
+      myData: []
+    };
+  },
+  methods: {
+    getData() {
+      axios
+        .get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
+        .then(response => {
+          this.myData = response.data;
+          console.log(response.data);
+        });
+    }
   }
 };
 </script>
 
 <style scoped>
-
+.wheather-list{
+  list-style: none;
+  text-align: justify;
+}
 </style>
