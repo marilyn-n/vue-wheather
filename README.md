@@ -1,11 +1,21 @@
 # Vue Weather App
 
-Weather App using OpenWeatherMap Api
-## Build Setup
+Weather App using OpenWeatherMap Api to find your country to know 
 
 # Installation
 
-# Build Setup
+This App is in development and needs installation of:
+
+* Node
+
+## Build Setup
+Make sure you are in the repo home directory first.
+
+#### Install NPM Dependencies
+
+`npm install`
+
+# Build App
 
 # serve with hot reload at localhost:8080
 npm run dev
