@@ -15,22 +15,21 @@
   </div>
   <div class="card mt-3">
     <h1>Forecast</h1>
-     <ul v-if='myData' class="wheather-list">
-       <h4>{{myData.name}}</h4>
-       <b>{{myData.sys}}</b>
-       <h4>Main</h4>
-       <li>{{myData.main}}</li>
-       <h4>Weather</h4>
-       <li>{{myData.weather}}</li>
-        <li>{{myData.wind}}</li>
-        <li>{{myData.rain}}</li>
-        <li>{{myData.clouds}}</li>
-        <li><img v-bind:src="`${this.imgURL}{{myData.weather[0].icon}}.png`"></li>
-
-<!-- <img v-bind:src="`${imgPreUrl()}img/logo.png`"> -->
-
-     </ul>
-  </div>
+        <!-- <img b-vind:src="http://openweathermap.org/img/w/{{myData.weather[0].icon.png}}" alt=""> -->
+       <b-list-group v-if='myData' class="list-group">
+        <b-list-group-item><h4>Weather and forecasts in {{myData.name}}</h4></b-list-group-item>
+        <b-list-group-item> <b>Location:</b>{{myData.sys}} </b-list-group-item>
+        <!-- <b-list-group-item> <b>Temperature Min:</b>{{myData.main.temp_min}}</b-list-group-item>
+        <b-list-group-item> <b>Temperature Max:</b>{{myData.main.temp_max}}</b-list-group-item>
+        <b-list-group-item> <b>Temperature:</b>{{myData.main.humidity}}</b-list-group-item> -->
+        <b-list-group-item> <b>Weather:</b>{{myData.weather}}</b-list-group-item>
+        <b-list-group-item> <b>Wind:</b>{{myData.wind}}</b-list-group-item>
+        <b-list-group-item> <b>Rain:</b>{{myData.rain}}</b-list-group-item>
+        <b-list-group-item> <b>Clouds:</b>{{myData.clouds}}</b-list-group-item>
+        <!-- <b-list-group-item> {{myData.weather[0].description}}</b-list-group-item> -->
+        <!-- <b-list-group-item>{{myData.sys.country}}</b-list-group-item>  -->
+       </b-list-group>
+    </div>
   </div>
 </template>
 
@@ -45,7 +44,6 @@ export default {
       base_URL: "http://api.openweathermap.org/data/2.5/",
       api: "cf703cde5684f6fd594aaece7c6cc8de",
       myData: [],
-      imgURL: 'http://openweathermap.org/img/w/'
     };
   },
   methods: {
@@ -61,7 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.wheather-list{
+.list-group{
   list-style: none;
   text-align: justify;
 }
