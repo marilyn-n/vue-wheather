@@ -1,6 +1,6 @@
 # Vue Weather App
 
-Weather App using OpenWeatherMap Api to find your country to know 
+Weather App created with Vue and OpenWeatherMap API to get data of the prognosis.
 
 # Installation
 
