@@ -13,11 +13,11 @@
      </div>
     </div>
   </div>
-
-        <ul v-for='d in myData' class="wheather-list">
-          <li>{{d | json}}</li>
-        </ul>
-
+  <div class="card mt-3">
+     <ul v-for='d in myData' class="wheather-list">
+       <li>{{d | json}}</li>
+     </ul>
+  </div>
   </div>
 </template>
 
@@ -36,8 +36,7 @@ export default {
   },
   methods: {
     getData() {
-      axios
-        .get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
+      axios.get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
         .then(response => {
           this.myData = response.data;
           console.log(response.data);
@@ -51,5 +50,13 @@ export default {
 .wheather-list{
   list-style: none;
   text-align: justify;
+}
+
+.card{
+  width: 900px;
+  margin-left: 150px;
+  margin-bottom: 150px;
+  padding: 50px;
+
 }
 </style>
