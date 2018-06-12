@@ -15,20 +15,29 @@
   </div>
   <div class="card mt-3">
     <h1>Forecast</h1>
-        <!-- <img b-vind:src="http://openweathermap.org/img/w/{{myData.weather[0].icon.png}}" alt=""> -->
        <b-list-group v-if='myData' class="list-group">
-        <b-list-group-item><h4>Weather and forecasts in {{myData.name}}</h4></b-list-group-item>
-        <b-list-group-item> <b>Location:</b>{{myData.sys}} </b-list-group-item>
+        <b-list-group-item>
+          <h4>Weather and forecasts in {{myData.name}}</h4>
+          <img src="http://openweathermap.org/img/w/03n.png" alt="">
+          <b>Description: </b>
+        </b-list-group-item>
+        <b-list-group-item> <b>Wind:</b>{{myData.wind}}</b-list-group-item>
+        <b-list-group-item> <b>Cloudiness:</b>{{myData.clouds}}</b-list-group-item>
+        <b-list-group-item> <b>Humidity:</b></b-list-group-item>
+        <b-list-group-item> <b>Sunrise:</b></b-list-group-item>
+        <b-list-group-item> <b>Sunset:</b></b-list-group-item>
+        <b-list-group-item> <b>Geo coords:</b></b-list-group-item>
+
+        <!-- <b-list-group-item> <b>Location:</b>{{myData.sys}} </b-list-group-item> -->
         <!-- <b-list-group-item> <b>Temperature Min:</b>{{myData.main.temp_min}}</b-list-group-item>
         <b-list-group-item> <b>Temperature Max:</b>{{myData.main.temp_max}}</b-list-group-item>
         <b-list-group-item> <b>Temperature:</b>{{myData.main.humidity}}</b-list-group-item> -->
-        <b-list-group-item> <b>Weather:</b>{{myData.weather}}</b-list-group-item>
-        <b-list-group-item> <b>Wind:</b>{{myData.wind}}</b-list-group-item>
-        <b-list-group-item> <b>Rain:</b>{{myData.rain}}</b-list-group-item>
-        <b-list-group-item> <b>Clouds:</b>{{myData.clouds}}</b-list-group-item>
+        <!-- <b-list-group-item> <b>Weather:</b>{{myData.weather}}</b-list-group-item> -->
+        <!-- <b-list-group-item> <b>Rain:</b>{{myData.rain}}</b-list-group-item> -->
         <!-- <b-list-group-item> {{myData.weather[0].description}}</b-list-group-item> -->
         <!-- <b-list-group-item>{{myData.sys.country}}</b-list-group-item>  -->
        </b-list-group>
+
     </div>
   </div>
 </template>
