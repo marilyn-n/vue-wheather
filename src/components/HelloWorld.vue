@@ -1,4 +1,5 @@
 <template>
+<div id="page"> 
   <div class="main">
   <div class="container"> 
     <div class="row">
@@ -40,12 +41,16 @@
 
     </div>
   </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 
+
 export default {
+  components: {
+  },
   name: "HelloWorld",
   data() {
     return {
