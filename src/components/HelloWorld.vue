@@ -5,20 +5,19 @@
     <div class="row">
     <div class="col"> 
       <div class="input-group mb-3">
-      <input type="text" class="form-control" v-model="city"  placeholder="Insert Country" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input type="text" class="form-control" v-model="city"  placeholder="Your city name" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" v-on:click="getData">Go</button>
-          {{city}}
         </div>
       </div>
      </div>
     </div>
   </div>
   <div class="card mt-3">
-    <h1>Forecast</h1>
+    <h1>Current weather and forecasts in your city</h1>
        <b-list-group v-if='myData' class="list-group">
         <b-list-group-item>
-          <h4>Weather and forecasts in {{myData.name}}</h4>
+          <h4>Weather in {{myData.name}}</h4>
           <img src="http://openweathermap.org/img/w/03n.png" alt="">
           <b>Description: </b>
         </b-list-group-item>
@@ -66,7 +65,12 @@ export default {
         .then(response => {
           this.myData = response.data;
           console.log(response.data);
+          this.clearInput();
         });
+    },
+
+    clearInput(){
+      this.city = ''
     }
   }
 };
@@ -85,4 +89,16 @@ export default {
   padding: 50px;
 
 }
+
+.container{
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.btn-outline-secondary{
+  border-color: #17a2b8;
+  background-color: #17a2b8;
+  color: white;
+}
+
 </style>
