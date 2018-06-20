@@ -15,11 +15,14 @@
   </div>
   <div class="card mt-3">
     <h1>Current weather and forecasts in your city</h1>
-       <b-list-group v-if='myData' class="list-group">
+       <b-list-group v-for='data in myData' class="list-group">
         <b-list-group-item>
-          <h4>Weather in {{myData.name}}</h4>
-          <img src="http://openweathermap.org/img/w/03n.png" alt="">
-          <b>Description: </b>
+          <h4><b>Weather in {{myData.name}}, <br /> {{myData.sys.country}}</b></h4>
+          <div> 
+          <img src="http://openweathermap.org/img/w/03n.png" alt=""><p>{{myData.main.temp}} ºC</p>
+          <br />
+          <p>{{myData.weather[0].description}} </p>
+          </div>
         </b-list-group-item>
         <b-list-group-item> <b>Wind:</b>{{myData.wind}}</b-list-group-item>
         <b-list-group-item> <b>Cloudiness:</b>{{myData.clouds}}</b-list-group-item>
@@ -27,14 +30,12 @@
         <b-list-group-item> <b>Sunrise:</b></b-list-group-item>
         <b-list-group-item> <b>Sunset:</b></b-list-group-item>
         <b-list-group-item> <b>Geo coords:</b></b-list-group-item>
-
-        <!-- <b-list-group-item> <b>Location:</b>{{myData.sys}} </b-list-group-item> -->
+       
         <!-- <b-list-group-item> <b>Temperature Min:</b>{{myData.main.temp_min}}</b-list-group-item>
         <b-list-group-item> <b>Temperature Max:</b>{{myData.main.temp_max}}</b-list-group-item>
         <b-list-group-item> <b>Temperature:</b>{{myData.main.humidity}}</b-list-group-item> -->
         <!-- <b-list-group-item> <b>Weather:</b>{{myData.weather}}</b-list-group-item> -->
         <!-- <b-list-group-item> <b>Rain:</b>{{myData.rain}}</b-list-group-item> -->
-        <!-- <b-list-group-item> {{myData.weather[0].description}}</b-list-group-item> -->
         <!-- <b-list-group-item>{{myData.sys.country}}</b-list-group-item>  -->
        </b-list-group>
 
@@ -61,7 +62,7 @@ export default {
   },
   methods: {
     getData() {
-      axios.get(`${this.base_URL}weather?q=${this.city}&appid=${this.api}`)
+      axios.get(`${this.base_URL}weather?q=${this.city}&units=metric&appid=${this.api}`)
         .then(response => {
           this.myData = response.data;
           console.log(response.data);
@@ -77,6 +78,10 @@ export default {
 </script>
 
 <style scoped>
+
+h1{
+  color: #d26c22;
+}
 .list-group{
   list-style: none;
   text-align: justify;
